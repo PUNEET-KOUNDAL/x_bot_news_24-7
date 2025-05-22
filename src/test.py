@@ -1,18 +1,6 @@
-from bot import profile_image , update_profile_info , post_tweet
+from bot import profile_image , update_profile_info , post_tweet ,like  , retweet , fetch_home_timeline ,upload_media
 
-filename  = r'C:\Users\punee\Pictures\Screenshots\Screenshot 2025-05-22 104150.png'
+post_tweet('hey')
+upload_media('this is first tweet with image (testing)',r'D:\PROJECTS\x_bot_news_24-7\media\into.webp' )
 
-profile_image(filename)
-
-
-
-#tesing bio 
-update_profile_info(
-    name='SPARKIE NEWS 24/7',
-    bio='Automated AI bot delivering real-time news on X',
-    location='India',
-    website='https://x.com/Puneet0_0?t=ndXMQZk10S3MGgP2dHx2Pw&s=08'
-)
-
-
-post_tweet('this is the first manuall from backend tweet for testing ')
+profile_image(r'D:\PROJECTS\x_bot_news_24-7\media\image.png')
