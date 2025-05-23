@@ -77,16 +77,40 @@ def retweet(id,text) :
     except Exception as e :
         print(f"failed to retweet")
 
-
-
-#like 
-def like(id):
+#unretweet use v2 client  x  api
+def unretweet(id):
+    api = get_api()
     client = get_client()
-    try :
-        client.like(id)
-        print(f"sucessfull")
-    except Exception as e :
-        print(f"failed")
+    client.unretweet(str(id))
+
+# reply this wil mvp or greate pipeline later on 
+
+"""def reply(tweet_id , message ) :
+    api = get_api()
+    tweet = api.get_status(str(tweet_id))
+    print(tweet)"""
+
+def reply(text,id):
+    client = get_client()
+    client.create_tweet(text = text , in_reply_to_tweet_id= id)
+
+
+#try to fetch username :
+def username(id):
+    client = get_client()
+    response = client.get_user(id=str(id))
+    print(response)  # <-- Debug: See full response
+    
+    if response.data:
+        print("Username:", response.data.username)
+    else:
+        print("User not found.")
+
+username(1925612480862036470)
+
+
+
+
 
 #timeline of home pages tweets 
 
@@ -103,3 +127,31 @@ def fetch_home_timeline():
 
 
 #interaction with tweets
+#v1 old version
+
+"""def favorite(tweet_id) :
+    api = get_api()
+    client = get_client()
+    api.create_favorite(str(tweet_id))
+"""
+
+def like(id):
+    client = get_client()
+    try :
+        client.like(id)
+        print(f"sucessfull")
+    except Exception as e :
+        print(f"failed")
+
+
+
+# v1 code giving error
+"""def retweet2(tweet_id) :
+    api = get_api
+    try :
+        api.retweet(str(tweet_id))
+        print(f"sucess")
+    except Exception as e  :
+        print(f"error")"""
+
+#unfavorite or unlike :
