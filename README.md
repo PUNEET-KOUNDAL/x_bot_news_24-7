@@ -22,3 +22,5 @@ Ideal for people who want quick updates on current events without reading full a
 
 ## 📁 Folder Structure
 
+
+# This project is under development so readme.md file is not up to date .
