@@ -96,18 +96,30 @@ def reply(text,id):
 
 
 #try to fetch username :
-def username(id):
+import time
+
+
+def username(user_name):
     client = get_client()
-    response = client.get_user(id=str(id))
-    print(response)  # <-- Debug: See full response
-    
-    if response.data:
-        print("Username:", response.data.username)
-    else:
-        print("User not found.")
+    try:
+        response = client.get_user(username=user_name)
+        print("Raw response:", response)
+        print("Response data:", response.data)
+        print(type(response))
 
-username(1925612480862036470)
+        if response.data:
+            print("Available keys:", response.data.__dict__.keys())
+            print("Username:", response.data.username)
+        else:
+            print("User not found or response empty.")
 
+    except Exception as e:
+        import traceback
+        print("Exception occurred:")
+        traceback.print_exc()
+        print("Rate limit exceeded or other error. Waiting 60 seconds...")
+        time.sleep(60)
+        return username(user_name)
 
 
 
@@ -155,3 +167,16 @@ def like(id):
         print(f"error")"""
 
 #unfavorite or unlike :
+
+
+#direct message :
+
+def send_message(screen_name,text) :
+    pass
+    api = get_api()
+    #api.send_direct_message(str(profile_id) , text=text) 
+
+
+
+
+
